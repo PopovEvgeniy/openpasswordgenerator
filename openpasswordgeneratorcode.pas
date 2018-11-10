@@ -48,7 +48,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.3.7';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.3.8';
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.Top:=0;
@@ -177,7 +177,7 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-ShowMessage('Open password generator. Version 0.3.7. Created by Popov Evgeniy Alekseyevich. This program distributed under GNU GENERAL PUBLIC LICENSE');
+ShowMessage('Open password generator. Version 0.3.8. Created by Popov Evgeniy Alekseyevich. This program distributed under GNU GENERAL PUBLIC LICENSE');
 end;
 
 procedure TForm1.LabeledEdit1Change(Sender: TObject);

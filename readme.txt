@@ -1,12 +1,13 @@
                   OPEN PASSWORD GENERATOR
 
-          Created by Popov Evgeniy Alekseyevich
+          This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.3.7
+                     Version 0.3.8
 
 System requirements
 
-Windows 2000 or higher
+Windows 2000 or higher for 32 system
+Windows Vista or higher for 64 system
 
 Description and usage
 
@@ -24,7 +25,7 @@ This program distributed under GNU GENERAL PUBLIC LICENSE.
 About program modification
 
 The source code included in source.zip archive.
-It can be compiled Lazarus 1.6 or higher.
+It can be compiled Lazarus 1.8.4 or higher.
 
 Feedback
 
@@ -36,3 +37,4 @@ Version history
 0.2 - Small changes
 0.3 - Maximum password length check added
 0.3.1 - 0.3.7 - Small changes
+0.3.8 - 64 bit system support was added
