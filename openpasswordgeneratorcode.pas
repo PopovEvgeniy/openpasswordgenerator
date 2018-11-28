@@ -4,7 +4,7 @@ unit openpasswordgeneratorcode;
 
 interface
 
-uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, LCLType,StdCtrls;
+uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls;
 
 type
 
@@ -24,7 +24,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
-    procedure LabeledEdit1KeyPress(Sender: TObject; var Key: char);
     procedure LabeledEdit2Change(Sender: TObject);
   private
     { private declarations }
@@ -34,9 +33,9 @@ type
 
 procedure window_setup();
 procedure interface_setup();
+procedure language_setup();
 procedure window_resize();
 procedure setup();
-procedure restrict_input(var key:char);
 function check_input(input:string):Boolean;
 function get_character():char;
 function generate_password(length:Word):string;
@@ -48,7 +47,8 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.3.8';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.1';
+ Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
  Form1.Top:=0;
@@ -63,11 +63,16 @@ Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
 Form1.Button3.ShowHint:=Form1.Button1.ShowHint;
 Form1.Button4.ShowHint:=Form1.Button1.ShowHint;
 Form1.Button3.Enabled:=Form1.Button1.Enabled;
+Form1.LabeledEdit1.NumbersOnly:=True;
 Form1.LabeledEdit1.MaxLength:=3;
-Form1.LabeledEdit1.Text:='';
-Form1.LabeledEdit2.Text:=Form1.LabeledEdit1.Text;
+Form1.LabeledEdit1.Text:='8';
+Form1.LabeledEdit2.Text:='';
 Form1.LabeledEdit1.LabelPosition:=lpLeft;
 Form1.LabeledEdit2.LabelPosition:=Form1.LabeledEdit1.LabelPosition;
+end;
+
+procedure language_setup();
+begin
 Form1.Button1.Caption:='Generate';
 Form1.Button2.Caption:='Clear';
 Form1.Button3.Caption:='Copy password to clipboard';
@@ -87,21 +92,9 @@ procedure setup();
 begin
 window_setup();
 interface_setup();
+language_setup();
 window_resize();
 Randomize();
-end;
-
-procedure restrict_input(var key:char);
-begin
-if (ord(key)<ord('0')) or (ord(key)>ord('9')) then
-begin
-if ord(key)<>VK_BACK then
-begin
-key:=#0;
-end;
-
-end;
-
 end;
 
 function check_input(input:string):Boolean;
@@ -140,7 +133,7 @@ begin
 if (Form1.LabeledEdit1.Text<>'') and (StrToInt(Form1.LabeledEdit1.Text)>255) then
 begin
 ShowMessage('Maximum password length is 255');
-Form1.LabeledEdit1.Text:='';
+Form1.LabeledEdit1.Text:='8';
 end;
 
 end;
@@ -177,18 +170,13 @@ end;
 
 procedure TForm1.Button4Click(Sender: TObject);
 begin
-ShowMessage('Open password generator. Version 0.3.8. Created by Popov Evgeniy Alekseyevich. This program distributed under GNU GENERAL PUBLIC LICENSE');
+ShowMessage('Open password generator. Version 0.4.1. This software made by Popov Evgeniy Alekseyevich. It distributed under GNU GENERAL PUBLIC LICENSE');
 end;
 
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
 check_password_length();
 Form1.Button1.Enabled:=check_input(Form1.LabeledEdit1.Text);
-end;
-
-procedure TForm1.LabeledEdit1KeyPress(Sender: TObject; var Key: char);
-begin
-restrict_input(Key);
 end;
 
 procedure TForm1.LabeledEdit2Change(Sender: TObject);

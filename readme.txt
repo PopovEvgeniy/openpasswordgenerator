@@ -2,7 +2,7 @@
 
           This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.3.8
+                     Version 0.4.1
 
 System requirements
 
@@ -11,7 +11,7 @@ Windows Vista or higher for 64 system
 
 Description and usage
 
-This program is automatic password generator.
+This program is simple password generator.
 Just set a password length and click on "Generate" button for generate password.
 
 Limitation
@@ -38,3 +38,4 @@ Version history
 0.3 - Maximum password length check added
 0.3.1 - 0.3.7 - Small changes
 0.3.8 - 64 bit system support was added
+0.3.9 - 0.4.1 - Small changes
