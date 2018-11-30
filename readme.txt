@@ -2,7 +2,7 @@
 
           This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.4.1
+                     Version 0.4.5
 
 System requirements
 
@@ -35,7 +35,9 @@ Version history
 
 0.1 - First version
 0.2 - Small changes
-0.3 - Maximum password length check added
+0.3 - Maximum password length checking was added
 0.3.1 - 0.3.7 - Small changes
 0.3.8 - 64 bit system support was added
 0.3.9 - 0.4.1 - Small changes
+0.4.2 - 0.4.3 - User interface was improved
+0.4.4 - 0.4.5 - Small changes

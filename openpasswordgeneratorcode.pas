@@ -14,13 +14,11 @@ type
     Button1: TButton;
     Button2: TButton;
     Button3: TButton;
-    Button4: TButton;
     LabeledEdit1: TLabeledEdit;
     LabeledEdit2: TLabeledEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
@@ -38,8 +36,8 @@ procedure window_resize();
 procedure setup();
 function check_input(input:string):Boolean;
 function get_character():char;
-function generate_password(length:Word):string;
-procedure check_password_length();
+function generate_password(amount:Byte):string;
+function check_password_length(target:string):string;
 var Form1: TForm1;
 
 implementation
@@ -47,12 +45,10 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.1';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.5';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
- Form1.Top:=0;
- Form1.Left:=Form1.Top;
 end;
 
 procedure interface_setup();
@@ -61,7 +57,6 @@ Form1.Button1.ShowHint:=False;
 Form1.Button1.Enabled:=False;
 Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
 Form1.Button3.ShowHint:=Form1.Button1.ShowHint;
-Form1.Button4.ShowHint:=Form1.Button1.ShowHint;
 Form1.Button3.Enabled:=Form1.Button1.Enabled;
 Form1.LabeledEdit1.NumbersOnly:=True;
 Form1.LabeledEdit1.MaxLength:=3;
@@ -76,15 +71,13 @@ begin
 Form1.Button1.Caption:='Generate';
 Form1.Button2.Caption:='Clear';
 Form1.Button3.Caption:='Copy password to clipboard';
-Form1.Button4.Caption:='About Open password generator';
 Form1.LabeledEdit1.EditLabel.Caption:='Length';
 Form1.LabeledEdit2.EditLabel.Caption:='Password';
 end;
 
 procedure window_resize();
 begin
-Form1.Width:=Screen.DesktopWidth;
-Form1.Height:=Form1.Button1.Top+Form1.Button2.Height+10;
+Form1.Width:=Screen.DesktopWidth-10;
 Form1.LabeledEdit2.Width:=Form1.ClientWidth;
 end;
 
@@ -116,26 +109,27 @@ if (code>=94) and (code<97) then code:=97;
 get_character:=chr(code);
 end;
 
-function generate_password(length:Word):string;
-var index:Word;
+function generate_password(amount:Byte):string;
+var index:Byte;
 var target:string;
 begin
 target:='';
-for index:=1 to length do
+for index:=1 to amount do
 begin
 target:=target+get_character();
 end;
 generate_password:=target;
 end;
 
-procedure check_password_length();
+function check_password_length(target:string):string;
+var password_length:string;
 begin
-if (Form1.LabeledEdit1.Text<>'') and (StrToInt(Form1.LabeledEdit1.Text)>255) then
+password_length:=target;
+if password_length<>'' then
 begin
-ShowMessage('Maximum password length is 255');
-Form1.LabeledEdit1.Text:='8';
+if StrToInt(password_length)>255 then password_length:='8';
 end;
-
+check_password_length:=password_length;
 end;
 
 { TForm1 }
@@ -151,10 +145,8 @@ window_resize();
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
-var length:Word;
 begin
-length:=StrToInt(Form1.LabeledEdit1.Text);
-Form1.LabeledEdit2.Text:=generate_password(length);
+Form1.LabeledEdit2.Text:=generate_password(StrToInt(Form1.LabeledEdit1.Text));
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -168,14 +160,9 @@ Form1.LabeledEdit2.SelectAll();
 Form1.LabeledEdit2.CopyToClipboard();
 end;
 
-procedure TForm1.Button4Click(Sender: TObject);
-begin
-ShowMessage('Open password generator. Version 0.4.1. This software made by Popov Evgeniy Alekseyevich. It distributed under GNU GENERAL PUBLIC LICENSE');
-end;
-
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
-check_password_length();
+Form1.LabeledEdit1.Text:=check_password_length(Form1.LabeledEdit1.Text);
 Form1.Button1.Enabled:=check_input(Form1.LabeledEdit1.Text);
 end;
 
