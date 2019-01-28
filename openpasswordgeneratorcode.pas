@@ -34,7 +34,6 @@ procedure interface_setup();
 procedure language_setup();
 procedure window_resize();
 procedure setup();
-function check_input(input:string):Boolean;
 function get_character():char;
 function generate_password(amount:Byte):string;
 function check_password_length(target:string):string;
@@ -45,7 +44,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.5';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.6';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -88,17 +87,6 @@ interface_setup();
 language_setup();
 window_resize();
 Randomize();
-end;
-
-function check_input(input:string):Boolean;
-var target:Boolean;
-begin
-target:=True;
-if input='' then
-begin
-target:=False;
-end;
-check_input:=target;
 end;
 
 function get_character():char;
@@ -163,12 +151,12 @@ end;
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
 Form1.LabeledEdit1.Text:=check_password_length(Form1.LabeledEdit1.Text);
-Form1.Button1.Enabled:=check_input(Form1.LabeledEdit1.Text);
+Form1.Button1.Enabled:=Form1.LabeledEdit1.Text<>'';
 end;
 
 procedure TForm1.LabeledEdit2Change(Sender: TObject);
 begin
-Form1.Button3.Enabled:=check_input(Form1.LabeledEdit2.Text);
+Form1.Button3.Enabled:=Form1.LabeledEdit2.Text<>'';
 end;
 
 {$R *.lfm}

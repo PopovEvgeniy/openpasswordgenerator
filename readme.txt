@@ -2,7 +2,7 @@
 
           This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.4.5.1
+                     Version 0.4.6
 
 System requirements
 
@@ -42,3 +42,4 @@ Version history
 0.4.2 - 0.4.3 - User interface was improved
 0.4.4 - 0.4.5 - Small changes
 0.4.5.1 - Documentation was updated
+0.4.6 - Small changes
