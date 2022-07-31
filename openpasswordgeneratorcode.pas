@@ -28,13 +28,6 @@ type
     { public declarations }
   end; 
 
-procedure window_setup();
-procedure interface_setup();
-procedure language_setup();
-procedure setup();
-function get_character():char;
-function generate_password(amount:Byte):string;
-function check_password_length(target:string):string;
 var Form1: TForm1;
 
 implementation
@@ -42,7 +35,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.7';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.4.8';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -88,8 +81,8 @@ begin
  get_character:=chr(code);
 end;
 
-function generate_password(amount:Byte):string;
-var index:Byte;
+function generate_password(amount:Word):string;
+var index:Word;
 var target:string;
 begin
  target:='';
@@ -98,17 +91,6 @@ begin
   target:=target+get_character();
  end;
  generate_password:=target;
-end;
-
-function check_password_length(target:string):string;
-var password_length:string;
-begin
- password_length:=target;
- if password_length<>'' then
- begin
-  if StrToInt(password_length)>255 then password_length:='8';
- end;
- check_password_length:=password_length;
 end;
 
 { TForm1 }
@@ -136,7 +118,6 @@ end;
 
 procedure TForm1.LabeledEdit1Change(Sender: TObject);
 begin
- Form1.LabeledEdit1.Text:=check_password_length(Form1.LabeledEdit1.Text);
  Form1.Button1.Enabled:=Form1.LabeledEdit1.Text<>'';
 end;
 
