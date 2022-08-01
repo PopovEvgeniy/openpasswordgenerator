@@ -2,7 +2,7 @@
 
           This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.4.8
+                     Version 0.4.9
 
 System requirements
 
@@ -13,6 +13,10 @@ Description and usage
 
 This program is simple password generator.
 Just set a password length and click on "Generate" button for generate password.
+
+Limitation
+
+Maximum password length is 99 characters.
 
 License
 
@@ -40,4 +44,4 @@ Version history
 0.4.5.1 - Documentation updated
 0.4.6 - Small changes
 0.4.7 - Small changes in user interface
-0.4.8 - Small changes
+0.4.8 - 0.4.9 - Small changes
