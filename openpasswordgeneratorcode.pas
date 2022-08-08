@@ -13,12 +13,10 @@ type
   TForm1 = class(TForm)
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
     LabeledEdit1: TLabeledEdit;
     LabeledEdit2: TLabeledEdit;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure LabeledEdit1Change(Sender: TObject);
     procedure LabeledEdit2Change(Sender: TObject);
@@ -35,7 +33,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.5';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.1';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -43,11 +41,10 @@ end;
 
 procedure interface_setup();
 begin
+ Form1.Button1.Enabled:=True;
+ Form1.Button2.Enabled:=False;
  Form1.Button1.ShowHint:=False;
- Form1.Button1.Enabled:=False;
  Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
- Form1.Button3.ShowHint:=Form1.Button1.ShowHint;
- Form1.Button3.Enabled:=Form1.Button1.Enabled;
  Form1.LabeledEdit1.NumbersOnly:=True;
  Form1.LabeledEdit2.Enabled:=False;
  Form1.LabeledEdit1.MaxLength:=2;
@@ -60,8 +57,7 @@ end;
 procedure language_setup();
 begin
  Form1.Button1.Caption:='Generate';
- Form1.Button2.Caption:='Clear';
- Form1.Button3.Caption:='Copy password to clipboard';
+ Form1.Button2.Caption:='Copy password to clipboard';
  Form1.LabeledEdit1.EditLabel.Caption:='Length';
  Form1.LabeledEdit2.EditLabel.Caption:='Password';
 end;
@@ -101,11 +97,6 @@ end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
- Form1.LabeledEdit2.Text:='';
-end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-begin
  Form1.LabeledEdit2.SelectAll();
  Form1.LabeledEdit2.CopyToClipboard();
 end;
@@ -117,7 +108,7 @@ end;
 
 procedure TForm1.LabeledEdit2Change(Sender: TObject);
 begin
- Form1.Button3.Enabled:=Form1.LabeledEdit2.Text<>'';
+ Form1.Button2.Enabled:=Form1.LabeledEdit2.Text<>'';
 end;
 
 {$R *.lfm}
