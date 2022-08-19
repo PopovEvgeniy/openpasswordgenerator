@@ -2,7 +2,7 @@
 
           This software made by Popov Evgeniy Alekseyevich
 
-                     Version 0.5.1
+                     Version 0.5.2
 
 System requirements
 
@@ -11,8 +11,8 @@ Windows Vista or higher for 64-bit system
 
 Description and usage
 
-This program is simple password generator.
-Just set a password length and click on "Generate" button for generate password.
+This program is a simple password generator.
+Just set a password length and click on "Generate" button to generate password.
 
 Limitation
 
@@ -46,3 +46,4 @@ Version history
 0.4.7 - Small changes in user interface
 0.4.8 - 0.5 - Small changes
 0.5.1 - Small changes in user interface
+0.5.2 - Small changes
