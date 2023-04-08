@@ -33,7 +33,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.3';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.4';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -69,7 +69,7 @@ begin
  language_setup();
 end;
 
-function generate_password(amount:Byte):string;
+function generate_password(const amount:Byte):string;
 var index:Byte;
 var target:string;
 begin
