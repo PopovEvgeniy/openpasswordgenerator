@@ -33,7 +33,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.4';
+ Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.5';
  Form1.BorderStyle:=bsDialog;
  Form1.Font.Name:=Screen.MenuFont.Name;
  Form1.Font.Size:=14;
@@ -57,7 +57,7 @@ end;
 procedure language_setup();
 begin
  Form1.Button1.Caption:='Generate';
- Form1.Button2.Caption:='Copy password to clipboard';
+ Form1.Button2.Caption:='Copy a password to the clipboard';
  Form1.LabeledEdit1.EditLabel.Caption:='Length';
  Form1.LabeledEdit2.EditLabel.Caption:='Password';
 end;
