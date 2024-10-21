@@ -2,7 +2,7 @@
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.5.5
+                     Version 0.5.5.1
 
 System requirements
 
@@ -16,7 +16,7 @@ Just set a password length and click on the "Generate" button to generate the pa
 
 Limitation
 
-Maximum password length is 99 characters.
+The maximum password length is 99 characters.
 
 License
 
@@ -33,19 +33,20 @@ You can send me a letter at tuzik87@inbox.ru.
 
 Version history
 
-0.1 — First version
-0.2 — Small changes
-0.3 — Password length checking has been added
-0.3.1 — 0.3.7 — Small changes
-0.3.8 — 64-bit system support has been added
-0.3.9 — 0.4.1 — Small changes
-0.4.2 — 0.4.3 — User interface improved
-0.4.4 — 0.4.5 — Small changes
-0.4.5.1 — Documentation updated
-0.4.6 — Small changes
-0.4.7 — Small changes in user interface
-0.4.8 — 0.5 — Small changes
-0.5.1 — Small changes in user interface
-0.5.2 — 0.5.4 — Small changes
-0.5.4.1 — Documentation updated
-0.5.5 — Small changes
+0.1: The first version.
+0.2: The small changes.
+0.3: The password length checking has been added.
+0.3.1-0.3.7: The small changes.
+0.3.8: The 64-bit system support has been added.
+0.3.9-0.4.1: The small changes.
+0.4.2-0.4.3: The user interface improved.
+0.4.4-0.4.5: The small changes.
+0.4.5.1: Documentation updated.
+0.4.6: The small changes.
+0.4.7: The small changes in the user interface.
+0.4.8-0.5: The small changes.
+0.5.1: The small changes in the user interface.
+0.5.2-0.5.4: The small changes.
+0.5.4.1: Documentation updated.
+0.5.5: The small changes.
+0.5.5.1: Documentation updated.
