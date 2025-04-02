@@ -8,58 +8,58 @@ uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls;
 
 type
 
-  { TForm1 }
+  { TMainWindow }
 
-  TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    LabeledEdit1: TLabeledEdit;
-    LabeledEdit2: TLabeledEdit;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+  TMainWindow = class(TForm)
+    GenerateButton: TButton;
+    CopyButton: TButton;
+    LengthField: TLabeledEdit;
+    PasswordField: TLabeledEdit;
+    procedure GenerateButtonClick(Sender: TObject);
+    procedure CopyButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure LabeledEdit1Change(Sender: TObject);
-    procedure LabeledEdit2Change(Sender: TObject);
+    procedure LengthFieldChange(Sender: TObject);
+    procedure PasswordFieldChange(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
   end; 
 
-var Form1: TForm1;
+var MainWindow: TMainWindow;
 
 implementation
 
 procedure window_setup();
 begin
- Application.Title:='OPEN PASSWORD GENERATOR';
- Form1.Caption:='OPEN PASSWORD GENERATOR 0.5.6';
- Form1.BorderStyle:=bsDialog;
- Form1.Font.Name:=Screen.MenuFont.Name;
- Form1.Font.Size:=14;
+ Application.Title:='Open password generator';
+ MainWindow.Caption:='Open password generator 0.5.7';
+ MainWindow.BorderStyle:=bsDialog;
+ MainWindow.Font.Name:=Screen.MenuFont.Name;
+ MainWindow.Font.Size:=14;
 end;
 
 procedure interface_setup();
 begin
- Form1.Button1.Enabled:=True;
- Form1.Button2.Enabled:=False;
- Form1.Button1.ShowHint:=False;
- Form1.Button2.ShowHint:=Form1.Button1.ShowHint;
- Form1.LabeledEdit1.NumbersOnly:=True;
- Form1.LabeledEdit2.Enabled:=False;
- Form1.LabeledEdit1.MaxLength:=2;
- Form1.LabeledEdit1.Text:='8';
- Form1.LabeledEdit2.Text:='';
- Form1.LabeledEdit1.LabelPosition:=lpLeft;
- Form1.LabeledEdit2.LabelPosition:=Form1.LabeledEdit1.LabelPosition;
+ MainWindow.GenerateButton.Enabled:=True;
+ MainWindow.CopyButton.Enabled:=False;
+ MainWindow.GenerateButton.ShowHint:=False;
+ MainWindow.CopyButton.ShowHint:=MainWindow.GenerateButton.ShowHint;
+ MainWindow.LengthField.NumbersOnly:=True;
+ MainWindow.PasswordField.Enabled:=False;
+ MainWindow.LengthField.MaxLength:=2;
+ MainWindow.LengthField.Text:='8';
+ MainWindow.PasswordField.Text:='';
+ MainWindow.LengthField.LabelPosition:=lpLeft;
+ MainWindow.PasswordField.LabelPosition:=MainWindow.LengthField.LabelPosition;
 end;
 
 procedure language_setup();
 begin
- Form1.Button1.Caption:='Generate';
- Form1.Button2.Caption:='Copy a password to the clipboard';
- Form1.LabeledEdit1.EditLabel.Caption:='Length';
- Form1.LabeledEdit2.EditLabel.Caption:='Password';
+ MainWindow.GenerateButton.Caption:='Generate';
+ MainWindow.CopyButton.Caption:='Copy a password to the clipboard';
+ MainWindow.LengthField.EditLabel.Caption:='Length';
+ MainWindow.PasswordField.EditLabel.Caption:='Password';
 end;
 
 procedure setup();
@@ -82,32 +82,32 @@ begin
  generate_password:=target;
 end;
 
-{ TForm1 }
+{ TMainWindow }
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TMainWindow.FormCreate(Sender: TObject);
 begin
  setup();
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TMainWindow.GenerateButtonClick(Sender: TObject);
 begin
- Form1.LabeledEdit2.Text:=generate_password(StrToInt(Form1.LabeledEdit1.Text));
+ MainWindow.PasswordField.Text:=generate_password(StrToInt(MainWindow.LengthField.Text));
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
+procedure TMainWindow.CopyButtonClick(Sender: TObject);
 begin
- Form1.LabeledEdit2.SelectAll();
- Form1.LabeledEdit2.CopyToClipboard();
+ MainWindow.PasswordField.SelectAll();
+ MainWindow.PasswordField.CopyToClipboard();
 end;
 
-procedure TForm1.LabeledEdit1Change(Sender: TObject);
+procedure TMainWindow.LengthFieldChange(Sender: TObject);
 begin
- Form1.Button1.Enabled:=Form1.LabeledEdit1.Text<>'';
+ MainWindow.GenerateButton.Enabled:=MainWindow.LengthField.Text<>'';
 end;
 
-procedure TForm1.LabeledEdit2Change(Sender: TObject);
+procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
- Form1.Button2.Enabled:=Form1.LabeledEdit2.Text<>'';
+ MainWindow.CopyButton.Enabled:=MainWindow.PasswordField.Text<>'';
 end;
 
 {$R *.lfm}

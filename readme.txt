@@ -1,8 +1,8 @@
-                  OPEN PASSWORD GENERATOR
+                  Open password generator
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.5.6
+                     Version 0.5.7
 
 System requirements
 
@@ -25,7 +25,7 @@ This program is distributed under GNU GENERAL PUBLIC LICENSE.
 About program modification
 
 The code is included in the source.zip archive.
-It can be compiled under Lazarus 4.0 RC1 or higher.
+It can be compiled under Lazarus 4.0 RC3 or higher.
 
 Feedback
 
@@ -51,3 +51,4 @@ Version history
 0.5.5: The small changes.
 0.5.5.1-0.5.5.2: The documentation has been updated.
 0.5.6: The source code was recompiled under Lazarus 4.0 RC1.
+0.5.7: The source code was recompiled under Lazarus 4.0 RC3.
