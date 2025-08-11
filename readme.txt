@@ -2,7 +2,7 @@
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.5.7
+                     Version 0.5.7.1
 
 System requirements
 
@@ -20,16 +20,12 @@ The maximum password length is 99 characters.
 
 License
 
-This program is distributed under GNU GENERAL PUBLIC LICENSE.
+This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 
 About program modification
 
 The code is included in the source.zip archive.
 It can be compiled under Lazarus 4.0 RC3 or higher.
-
-Feedback
-
-You can send me a letter at tuzik87@inbox.ru.
 
 Version history
 
@@ -52,3 +48,4 @@ Version history
 0.5.5.1-0.5.5.2: The documentation has been updated.
 0.5.6: The source code was recompiled under Lazarus 4.0 RC1.
 0.5.7: The source code was recompiled under Lazarus 4.0 RC3.
+0.5.7.1: The documentation has been updated.
