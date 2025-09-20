@@ -33,7 +33,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.5.7';
+ MainWindow.Caption:='Open password generator 0.5.8';
  MainWindow.BorderStyle:=bsDialog;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
