@@ -2,7 +2,7 @@
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.5.8
+                     Version 0.6.5
 
 System requirements.
 
@@ -12,7 +12,7 @@ Windows Vista or higher for 64-bit systems
 The program description.
 
 This program is a simple password generator.
-Just set a password length and click on the “Generate” button to generate the password.
+Just set a password length and click on the "Generate" button to generate the password.
 The maximum password length is 99 characters.
 
 License.
@@ -22,7 +22,7 @@ This program is distributed under the GNU GENERAL PUBLIC LICENSE.
 The source code.
 
 The code is included in the source.zip archive.
-It can be compiled under Lazarus 4.2 or higher.
+It can be compiled under Lazarus 4.6 or higher.
 
 Version history.
 
@@ -47,3 +47,6 @@ Version history.
 0.5.7: The source code was recompiled under Lazarus 4.0 RC3.
 0.5.7.1: The documentation has been updated.
 0.5.8: The source code was recompiled under Lazarus 4.2.
+0.5.9: The user interface has improved.
+0.6-0.6.2: The small changes.
+0.6.3-0.6.5: The user interface has improved.
