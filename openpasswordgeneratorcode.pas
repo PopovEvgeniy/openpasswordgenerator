@@ -4,7 +4,7 @@ unit openpasswordgeneratorcode;
 
 interface
 
-uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus;
+uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus, LCLType;
 
 type
 
@@ -25,6 +25,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure LengthFieldChange(Sender: TObject);
+    procedure LengthFieldKeyPress(Sender: TObject; var Key: char);
     procedure PasswordFieldChange(Sender: TObject);
   private
     { private declarations }
@@ -39,7 +40,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.6.8';
+ MainWindow.Caption:='Open password generator 0.6.9';
  MainWindow.BorderStyle:=bsSizeable;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
@@ -55,7 +56,6 @@ begin
  MainWindow.ClearButton.ShowHint:=True;
  MainWindow.CopyButton.ShowHint:=True;
  MainWindow.CutButton.ShowHint:=True;
- MainWindow.LengthField.NumbersOnly:=True;
  MainWindow.PasswordField.Enabled:=False;
  MainWindow.LengthField.MaxLength:=2;
  MainWindow.LengthField.Text:='8';
@@ -84,6 +84,15 @@ begin
  window_setup();
  interface_setup();
  language_setup();
+end;
+
+procedure restrict_input(var key:char);
+begin
+ if (ord(key)<ord('0')) or (ord(key)>ord('9')) then
+ begin
+  if ord(key)<>VK_BACK then key:=#0;
+ end;
+
 end;
 
 function generate_password(const amount:Byte):string;
@@ -137,6 +146,11 @@ end;
 procedure TMainWindow.LengthFieldChange(Sender: TObject);
 begin
  MainWindow.GenerateButton.Enabled:=MainWindow.LengthField.Text<>'';
+end;
+
+procedure TMainWindow.LengthFieldKeyPress(Sender: TObject; var Key: char);
+begin
+ restrict_input(Key);
 end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
