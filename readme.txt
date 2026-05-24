@@ -2,7 +2,7 @@
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.6.5
+                     Version 0.6.8
 
 System requirements.
 
@@ -49,4 +49,6 @@ Version history.
 0.5.8: The source code was recompiled under Lazarus 4.2.
 0.5.9: The user interface has improved.
 0.6-0.6.2: The small changes.
-0.6.3-0.6.5: The user interface has improved.
+0.6.3-0.6.6: The user interface has improved.
+0.6.7: The small changes.
+0.6.8: The user interface has improved.

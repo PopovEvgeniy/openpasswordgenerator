@@ -4,21 +4,24 @@ unit openpasswordgeneratorcode;
 
 interface
 
-uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls;
+uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus;
 
 type
 
   { TMainWindow }
 
   TMainWindow = class(TForm)
-    ClearButton: TButton;
     GenerateButton: TButton;
     CopyButton: TButton;
+    CutButton: TButton;
+    ClearButton: TButton;
     LengthField: TLabeledEdit;
     PasswordField: TLabeledEdit;
-    procedure ClearButtonClick(Sender: TObject);
+    EmptyMenu: TPopupMenu;
     procedure GenerateButtonClick(Sender: TObject);
     procedure CopyButtonClick(Sender: TObject);
+    procedure CutButtonClick(Sender: TObject);
+    procedure ClearButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure LengthFieldChange(Sender: TObject);
@@ -36,7 +39,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.6.5';
+ MainWindow.Caption:='Open password generator 0.6.8';
  MainWindow.BorderStyle:=bsSizeable;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
@@ -46,10 +49,12 @@ procedure interface_setup();
 begin
  MainWindow.GenerateButton.Enabled:=True;
  MainWindow.CopyButton.Enabled:=False;
+ MainWindow.CutButton.Enabled:=False;
  MainWindow.ClearButton.Enabled:=False;
  MainWindow.GenerateButton.ShowHint:=True;
  MainWindow.ClearButton.ShowHint:=True;
  MainWindow.CopyButton.ShowHint:=True;
+ MainWindow.CutButton.ShowHint:=True;
  MainWindow.LengthField.NumbersOnly:=True;
  MainWindow.PasswordField.Enabled:=False;
  MainWindow.LengthField.MaxLength:=2;
@@ -57,15 +62,18 @@ begin
  MainWindow.PasswordField.Text:='';
  MainWindow.LengthField.LabelPosition:=lpLeft;
  MainWindow.PasswordField.LabelPosition:=lpLeft;
+ MainWindow.LengthField.PopupMenu:=MainWindow.EmptyMenu;
 end;
 
 procedure language_setup();
 begin
  MainWindow.GenerateButton.Caption:='Generate';
  MainWindow.CopyButton.Caption:='Copy';
+ MainWindow.CutButton.Caption:='Cut';
  MainWindow.ClearButton.Caption:='Clear';
  MainWindow.GenerateButton.Hint:='Generate a password';
  MainWindow.CopyButton.Hint:='Copy the password to the clipboard';
+ MainWindow.CutButton.Hint:='Cut the password to the clipboard';
  MainWindow.ClearButton.Hint:='Clear the password';
  MainWindow.LengthField.EditLabel.Caption:='Length';
  MainWindow.PasswordField.EditLabel.Caption:='Password';
@@ -109,15 +117,21 @@ begin
  MainWindow.PasswordField.Text:=generate_password(StrToInt(MainWindow.LengthField.Text));
 end;
 
-procedure TMainWindow.ClearButtonClick(Sender: TObject);
-begin
- MainWindow.PasswordField.Text:='';
-end;
-
 procedure TMainWindow.CopyButtonClick(Sender: TObject);
 begin
  MainWindow.PasswordField.SelectAll();
  MainWindow.PasswordField.CopyToClipboard();
+end;
+
+procedure TMainWindow.CutButtonClick(Sender: TObject);
+begin
+ MainWindow.PasswordField.SelectAll();
+ MainWindow.PasswordField.CutToClipboard();
+end;
+
+procedure TMainWindow.ClearButtonClick(Sender: TObject);
+begin
+ MainWindow.PasswordField.Text:='';
 end;
 
 procedure TMainWindow.LengthFieldChange(Sender: TObject);
@@ -128,6 +142,7 @@ end;
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
  MainWindow.CopyButton.Enabled:=MainWindow.PasswordField.Text<>'';
+ MainWindow.CutButton.Enabled:=MainWindow.CopyButton.Enabled;
  MainWindow.ClearButton.Enabled:=MainWindow.CopyButton.Enabled;
 end;
 
