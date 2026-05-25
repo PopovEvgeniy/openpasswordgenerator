@@ -40,7 +40,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.6.9';
+ MainWindow.Caption:='Open password generator 0.7';
  MainWindow.BorderStyle:=bsSizeable;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
@@ -88,7 +88,7 @@ end;
 
 procedure restrict_input(var key:char);
 begin
- if (ord(key)<ord('0')) or (ord(key)>ord('9')) then
+ if not (key in ['0'..'9']) then
  begin
   if ord(key)<>VK_BACK then key:=#0;
  end;
