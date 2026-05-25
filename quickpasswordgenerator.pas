@@ -5,8 +5,10 @@ unit quickpasswordgenerator;
  It is distributed under the GNU GENERAL PUBLIC LICENSE (Version 2 or higher).
 }
 
-{$mode ObjFPC}
-{$H+}
+{$IFDEF FPC}
+ {$mode objfpc}
+ {$H+}
+{$ENDIF}
 
 interface
 

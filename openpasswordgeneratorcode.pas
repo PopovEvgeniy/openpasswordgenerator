@@ -34,7 +34,10 @@ type
     procedure LengthFieldKeyPress(Sender: TObject; var Key: char);
     procedure PasswordFieldChange(Sender: TObject);
   private
-    { private declarations }
+    procedure window_setup();
+    procedure interface_setup();
+    procedure language_setup();
+    procedure setup();
   public
     { public declarations }
   end; 
@@ -43,53 +46,53 @@ var MainWindow: TMainWindow;
 
 implementation
 
-procedure window_setup();
+procedure TMainWindow.window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.7.1';
- MainWindow.BorderStyle:=bsSizeable;
- MainWindow.Font.Name:=Screen.MenuFont.Name;
- MainWindow.Font.Size:=14;
+ Self.Caption:='Open password generator 0.7.3';
+ Self.BorderStyle:=bsSizeable;
+ Self.Font.Name:=Screen.MenuFont.Name;
+ Self.Font.Size:=14;
 end;
 
-procedure interface_setup();
+procedure TMainWindow.interface_setup();
 begin
- MainWindow.GenerateButton.Enabled:=True;
- MainWindow.CopyButton.Enabled:=False;
- MainWindow.CutButton.Enabled:=False;
- MainWindow.ClearButton.Enabled:=False;
- MainWindow.GenerateButton.ShowHint:=True;
- MainWindow.ClearButton.ShowHint:=True;
- MainWindow.CopyButton.ShowHint:=True;
- MainWindow.CutButton.ShowHint:=True;
- MainWindow.PasswordField.Enabled:=False;
- MainWindow.LengthField.MaxLength:=2;
- MainWindow.LengthField.Text:='8';
- MainWindow.PasswordField.Text:='';
- MainWindow.LengthField.LabelPosition:=lpLeft;
- MainWindow.PasswordField.LabelPosition:=lpLeft;
- MainWindow.LengthField.PopupMenu:=MainWindow.EmptyMenu;
+ Self.GenerateButton.Enabled:=True;
+ Self.CopyButton.Enabled:=False;
+ Self.CutButton.Enabled:=False;
+ Self.ClearButton.Enabled:=False;
+ Self.GenerateButton.ShowHint:=True;
+ Self.ClearButton.ShowHint:=True;
+ Self.CopyButton.ShowHint:=True;
+ Self.CutButton.ShowHint:=True;
+ Self.PasswordField.Enabled:=False;
+ Self.LengthField.MaxLength:=2;
+ Self.LengthField.Text:='8';
+ Self.PasswordField.Text:='';
+ Self.LengthField.LabelPosition:=lpLeft;
+ Self.PasswordField.LabelPosition:=lpLeft;
+ Self.LengthField.PopupMenu:=Self.EmptyMenu;
 end;
 
-procedure language_setup();
+procedure TMainWindow.language_setup();
 begin
- MainWindow.GenerateButton.Caption:='Generate';
- MainWindow.CopyButton.Caption:='Copy';
- MainWindow.CutButton.Caption:='Cut';
- MainWindow.ClearButton.Caption:='Clear';
- MainWindow.GenerateButton.Hint:='Generate a password';
- MainWindow.CopyButton.Hint:='Copy the password to the clipboard';
- MainWindow.CutButton.Hint:='Cut the password to the clipboard';
- MainWindow.ClearButton.Hint:='Clear the password';
- MainWindow.LengthField.EditLabel.Caption:='Length';
- MainWindow.PasswordField.EditLabel.Caption:='Password';
+ Self.GenerateButton.Caption:='Generate';
+ Self.CopyButton.Caption:='Copy';
+ Self.CutButton.Caption:='Cut';
+ Self.ClearButton.Caption:='Clear';
+ Self.GenerateButton.Hint:='Generate a password';
+ Self.CopyButton.Hint:='Copy the password to the clipboard';
+ Self.CutButton.Hint:='Cut the password to the clipboard';
+ Self.ClearButton.Hint:='Clear the password';
+ Self.LengthField.EditLabel.Caption:='Length';
+ Self.PasswordField.EditLabel.Caption:='Password';
 end;
 
-procedure setup();
+procedure TMainWindow.setup();
 begin
- window_setup();
- interface_setup();
- language_setup();
+ Self.window_setup();
+ Self.interface_setup();
+ Self.language_setup();
 end;
 
 procedure restrict_input(var key:char);
@@ -105,40 +108,40 @@ end;
 
 procedure TMainWindow.FormCreate(Sender: TObject);
 begin
- setup();
+ Self.setup();
 end;
 
 procedure TMainWindow.FormResize(Sender: TObject);
 begin
- MainWindow.PasswordField.Width:=MainWindow.ClientWidth;
- MainWindow.Height:=MainWindow.GenerateButton.Top+MainWindow.GenerateButton.Height+10;
+ Self.PasswordField.Width:=Self.ClientWidth;
+ Self.Height:=Self.GenerateButton.Top+Self.GenerateButton.Height+10;
 end;
 
 procedure TMainWindow.GenerateButtonClick(Sender: TObject);
 begin
- MainWindow.PasswordField.Text:=generate_password(StrToInt(MainWindow.LengthField.Text));
+ Self.PasswordField.Text:=generate_password(StrToInt(Self.LengthField.Text));
 end;
 
 procedure TMainWindow.CopyButtonClick(Sender: TObject);
 begin
- MainWindow.PasswordField.SelectAll();
- MainWindow.PasswordField.CopyToClipboard();
+ Self.PasswordField.SelectAll();
+ Self.PasswordField.CopyToClipboard();
 end;
 
 procedure TMainWindow.CutButtonClick(Sender: TObject);
 begin
- MainWindow.PasswordField.SelectAll();
- MainWindow.PasswordField.CutToClipboard();
+ Self.PasswordField.SelectAll();
+ Self.PasswordField.CutToClipboard();
 end;
 
 procedure TMainWindow.ClearButtonClick(Sender: TObject);
 begin
- MainWindow.PasswordField.Text:='';
+ Self.PasswordField.Text:='';
 end;
 
 procedure TMainWindow.LengthFieldChange(Sender: TObject);
 begin
- MainWindow.GenerateButton.Enabled:=MainWindow.LengthField.Text<>'';
+ Self.GenerateButton.Enabled:=Self.LengthField.Text<>'';
 end;
 
 procedure TMainWindow.LengthFieldKeyPress(Sender: TObject; var Key: char);
@@ -148,9 +151,9 @@ end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
 begin
- MainWindow.CopyButton.Enabled:=MainWindow.PasswordField.Text<>'';
- MainWindow.CutButton.Enabled:=MainWindow.CopyButton.Enabled;
- MainWindow.ClearButton.Enabled:=MainWindow.CopyButton.Enabled;
+ Self.CopyButton.Enabled:=Self.PasswordField.Text<>'';
+ Self.CutButton.Enabled:=Self.CopyButton.Enabled;
+ Self.ClearButton.Enabled:=Self.CopyButton.Enabled;
 end;
 
 {$R *.lfm}
