@@ -1,10 +1,16 @@
 unit openpasswordgeneratorcode;
 
-{$mode objfpc}{$H+}
+{
+ This sofware was made by Popov Evgeniy Alekseyevich.
+ It is distributed under the GNU GENERAL PUBLIC LICENSE (Version 2 or higher).
+}
+
+{$mode objfpc}
+{$H+}
 
 interface
 
-uses Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus, LCLType;
+uses quickpasswordgenerator, Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus, LCLType;
 
 type
 
@@ -40,7 +46,7 @@ implementation
 procedure window_setup();
 begin
  Application.Title:='Open password generator';
- MainWindow.Caption:='Open password generator 0.7';
+ MainWindow.Caption:='Open password generator 0.7.1';
  MainWindow.BorderStyle:=bsSizeable;
  MainWindow.Font.Name:=Screen.MenuFont.Name;
  MainWindow.Font.Size:=14;
@@ -93,19 +99,6 @@ begin
   if ord(key)<>VK_BACK then key:=#0;
  end;
 
-end;
-
-function generate_password(const amount:Byte):string;
-var index:Byte;
-var target:string;
-begin
- target:='';
- Randomize();
- for index:=1 to amount do
- begin
-  target:=target+chr(Random(94)+33);
- end;
- generate_password:=target;
 end;
 
 { TMainWindow }
