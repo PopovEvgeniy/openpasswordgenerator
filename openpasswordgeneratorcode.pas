@@ -10,7 +10,7 @@ unit openpasswordgeneratorcode;
 
 interface
 
-uses quickpasswordgenerator, Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus, LCLType;
+uses quickpasswordgenerator, Classes, SysUtils, Forms, Controls, Dialogs, ExtCtrls, StdCtrls, Menus;
 
 type
 
@@ -30,9 +30,8 @@ type
     procedure ClearButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure LengthFieldChange(Sender: TObject);
-    procedure LengthFieldKeyPress(Sender: TObject; var Key: char);
     procedure PasswordFieldChange(Sender: TObject);
+    procedure LengthFieldChange(Sender: TObject);
   private
     procedure window_setup();
     procedure interface_setup();
@@ -49,7 +48,7 @@ implementation
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Open password generator';
- Self.Caption:='Open password generator 0.7.3';
+ Self.Caption:='Open password generator 0.7.6';
  Self.BorderStyle:=bsSizeable;
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
@@ -66,6 +65,7 @@ begin
  Self.CopyButton.ShowHint:=True;
  Self.CutButton.ShowHint:=True;
  Self.PasswordField.Enabled:=False;
+ Self.LengthField.NumbersOnly:=True;
  Self.LengthField.MaxLength:=2;
  Self.LengthField.Text:='8';
  Self.PasswordField.Text:='';
@@ -93,15 +93,6 @@ begin
  Self.window_setup();
  Self.interface_setup();
  Self.language_setup();
-end;
-
-procedure restrict_input(var key:char);
-begin
- if not (key in ['0'..'9']) then
- begin
-  if ord(key)<>VK_BACK then key:=#0;
- end;
-
 end;
 
 { TMainWindow }
@@ -136,17 +127,7 @@ end;
 
 procedure TMainWindow.ClearButtonClick(Sender: TObject);
 begin
- Self.PasswordField.Text:='';
-end;
-
-procedure TMainWindow.LengthFieldChange(Sender: TObject);
-begin
- Self.GenerateButton.Enabled:=Self.LengthField.Text<>'';
-end;
-
-procedure TMainWindow.LengthFieldKeyPress(Sender: TObject; var Key: char);
-begin
- restrict_input(Key);
+ Self.PasswordField.Clear();
 end;
 
 procedure TMainWindow.PasswordFieldChange(Sender: TObject);
@@ -154,6 +135,16 @@ begin
  Self.CopyButton.Enabled:=Self.PasswordField.Text<>'';
  Self.CutButton.Enabled:=Self.CopyButton.Enabled;
  Self.ClearButton.Enabled:=Self.CopyButton.Enabled;
+end;
+
+procedure TMainWindow.LengthFieldChange(Sender: TObject);
+begin
+ Self.GenerateButton.Enabled:=Self.LengthField.Text<>'';
+ if Self.LengthField.Text<>'' then
+ begin
+  if StrToIntDef(Self.LengthField.Text,0)<=0 then Self.LengthField.Clear();
+ end;
+
 end;
 
 {$R *.lfm}
