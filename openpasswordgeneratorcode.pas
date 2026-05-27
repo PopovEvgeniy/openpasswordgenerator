@@ -48,7 +48,7 @@ implementation
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Open password generator';
- Self.Caption:='Open password generator 0.7.6';
+ Self.Caption:='Open password generator 0.7.7';
  Self.BorderStyle:=bsSizeable;
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
@@ -140,7 +140,7 @@ end;
 procedure TMainWindow.LengthFieldChange(Sender: TObject);
 begin
  Self.GenerateButton.Enabled:=Self.LengthField.Text<>'';
- if Self.LengthField.Text<>'' then
+ if Self.GenerateButton.Enabled then
  begin
   if StrToIntDef(Self.LengthField.Text,0)<=0 then Self.LengthField.Clear();
  end;

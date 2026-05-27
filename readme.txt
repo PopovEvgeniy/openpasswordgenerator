@@ -2,7 +2,7 @@
 
           This software was made by Popov Evgeniy Alekseyevich
 
-                     Version 0.7.6
+                     Version 0.7.7
 
 System requirements.
 
@@ -54,4 +54,4 @@ Version history.
 0.6.8: The user interface has improved.
 0.6.9-0.7.4: The small changes.
 0.7.5: The user input validation has improved.
-0.7.6: The small changes.
+0.7.6-0.7.7: The small changes.
