@@ -7,8 +7,8 @@ unit quickpasswordgenerator;
 
 {$IFDEF FPC}
  {$mode objfpc}
- {$H+}
 {$ENDIF}
+{$H+}
 
 interface
 

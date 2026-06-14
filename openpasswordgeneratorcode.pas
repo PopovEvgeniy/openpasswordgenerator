@@ -48,7 +48,7 @@ implementation
 procedure TMainWindow.window_setup();
 begin
  Application.Title:='Open password generator';
- Self.Caption:='Open password generator 0.7.7';
+ Self.Caption:='Open password generator 0.7.8';
  Self.BorderStyle:=bsSizeable;
  Self.Font.Name:=Screen.MenuFont.Name;
  Self.Font.Size:=14;
