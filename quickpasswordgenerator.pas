@@ -25,7 +25,7 @@ begin
  begin
   target:=target+chr(Random(94)+33);
  end;
- generate_password:=target;
+ Result:=target;
 end;
 
 Initialization
